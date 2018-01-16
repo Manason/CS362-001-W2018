@@ -36,7 +36,7 @@ public class TimeTable {
 
 	        
 	        //Make sure that the first day is before the last day
-	        if (!firstDay.before(lastDay)) {
+	        if (firstDay.before(lastDay)) {
 	        	throw new DateOutOfRangeException ("Second date specified is not  before the first date specified.");
 	        }
 	        
@@ -60,7 +60,7 @@ public class TimeTable {
 			// For each day in the list, calculate the difference between the
 			// first day and the day of occurrence and add the appointment to
 			// the correct CalDay
-			int daysDifference = 0;
+			int daysDifference = 1;
 			nextDay = (GregorianCalendar) firstDay.clone();
 			Iterator<GregorianCalendar> itr = apptOccursOnDays.iterator();
 			while (itr.hasNext()) {
