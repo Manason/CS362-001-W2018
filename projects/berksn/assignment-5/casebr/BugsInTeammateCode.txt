@@ -1,0 +1,23 @@
+Bug Report #1:
+
+Title: Appointment AM/PM not printing properly
+Symptom: any morning hour less than 11 is printed improperly when using Appt.toString() as "pm", and any hour 11 or greater is printed as "am" meaning that only 11am will be printed properly, any other time will have the opposite. If it's supposed to be am it will be printed as pm and vise-versa.
+Cause: Line 280 of Appt.java in Appt.toString(): String half = (getStartHour() < 11) ? "pm" : "am";
+(getStartHour() < 11) should be getStartHour() > 11)
+Severity: Medium
+Priority: High
+
+Bug Report #2:
+
+Title: TimeTable.getApptRange() crashes program
+Symptom: Program crashes when calling TimeTable.getApptRange()
+Cause: Line 39 of TimeTable.java: 
+
+ if (firstDay.before(lastDay)) {
+	throw new DateOutOfRangeException ("Second date specified is not  before the first date specified.");
+ }
+
+That line is supposed to make sure that first day occurs before last day, and so the if condition needs to be negated so that the program should only throw a DateOutOfRangeException if first day is not before the last day, the condition will crash the program currently.
+Severity: High
+Priority: High
+
